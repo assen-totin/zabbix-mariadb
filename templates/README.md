@@ -127,7 +127,7 @@ Macros (alarm thresholds):
 
 Defaults can be overridden by defining the same macro with another value in the host configuration.
 
-# UM NODE TEMPLATE
+# COLUMNSTORE UM NODE TEMPLATE
 
 Includes Server template.
 
@@ -147,7 +147,7 @@ Triggers:
 
 NB: Items/triggers for processes `ProcMon`, `ServerMonitor` and `workernode` are also part of the PM template as these processes are present on both UM and PM nodes. If both templates are applied to same host (e.g., for single-server installations of ColumnStore), items will appear twice - that is normal and expected. 
 
-# PM NODE TEMPLATE
+# COLUMNSTORE PM NODE TEMPLATE
 
 Triggers:
 
@@ -174,10 +174,11 @@ Triggers:
 * Process ProcMgr is not running on any node in the group: High
 
 NB: In case of multiple PM nodes in one ColumnStore cluster, do note that the `controllernode` process only runs on one of these nodes and that the `ProcMgr` process runs only on two of the PM nodes. This means that if you have more than one PM, you will get an alarm for `controllernode` process being down on all nodes but one and if you have more than two PM nodes, you will get an alarm for `ProcMgr` process being down on all but two. To avoid these unnecessary alarms: 
-    * Create a new host group in Zabbix (e.g., named `MariaDB AX Cluster 1`).
-    * Add all PM and UM nodes to this new group.
-    * Edit each PM node and add a macro named `{$MARIADB.AX.GRP.ENABLED}` with value of `1`.
-    * Do a full clone of the `MariaDB AX Group` template under a new name, e.g. `MariaDB AX Cluster 1`.
-    * Edit the cloned template `MariaDB AX Cluster 1`; in each item edit the key and change the first parameter of the `grpsum` function to the name of the host group created above (e.g.,`MariaDB AX Cluster 1`; keep the group name in quotes).
-    * Edit the UM node (or only one of the UM nodes, if there are several) and add to it the cloned template `MariaDB AX Cluster 1`. 
+
+* Create a new host group in Zabbix (e.g., named `MariaDB AX Cluster 1`).
+* Add all PM and UM nodes to this new group.
+* Edit each PM node and add a macro named `{$MARIADB.AX.GRP.ENABLED}` with value of `1`.
+* Do a full clone of the `MariaDB AX Group` template under a new name, e.g. `MariaDB AX Cluster 1`.
+* Edit the cloned template `MariaDB AX Cluster 1`; in each item edit the key and change the first parameter of the `grpsum` function to the name of the host group created above (e.g.,`MariaDB AX Cluster 1`; keep the group name in quotes).
+* Edit the UM node (or only one of the UM nodes, if there are several) and add to it the cloned template `MariaDB AX Cluster 1`. 
 
