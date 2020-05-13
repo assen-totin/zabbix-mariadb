@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.2</version>
+    <date>2018-10-12T10:12:00Z</date>
+    <value_maps>
+        <value_map>
+            <name>MariaDB TX Galera node local state</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>PRIMARY</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>JOINER</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>JOINED</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>SYNCED</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>DONOR</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>

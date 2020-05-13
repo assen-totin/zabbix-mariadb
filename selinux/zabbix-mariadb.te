@@ -1,0 +1,16 @@
+module zabbix-mariadb 2.0;
+
+require {
+	type zabbix_agent_t;
+	type mysqld_etc_t;
+	type zabbix_var_lib_t;
+	type mysqld_t;
+
+	class file { read open };
+	class unix_stream_socket { connectto };
+}
+
+allow zabbix_agent_t mysqld_etc_t:file { read open };
+allow zabbix_agent_t zabbix_var_lib_t:file { read open };
+allow zabbix_agent_t mysqld_t:unix_stream_socket { connectto };
+

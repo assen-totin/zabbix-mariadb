@@ -1,0 +1,1 @@
+zabbix ALL=(ALL) NOPASSWD: /usr/local/bin/mcsadmin, /usr/local/bin/maxctrl, /bin/ls, /bin/du

@@ -1,0 +1,2 @@
+- Discuss and decide on error log montirong as MariaDB does not have a dedicated error-only log and the general log sees lots of non-error input which will cause faulty alarms.
+
